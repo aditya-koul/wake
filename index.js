@@ -11,12 +11,12 @@ export const base64Encode = async (req, res) => {
       
       const { input } = req.body;
       console.log(req.body)
-      // if (!input) {
-      //   return res.status(400).json({ 
-      //     error: 'Input is required',
-      //     output: null 
-      //   });
-      // }
+      if (!input) {
+        return res.status(400).json({ 
+          error: 'Input is required',
+          output: null 
+        });
+      }
   
     
       const output = Buffer.from(input).toString('base64');
