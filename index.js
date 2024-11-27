@@ -33,24 +33,21 @@ export const base64Encode = async (req, res) => {
     }
   };
 
-
-
-const docs = {
-    name: "base64Encode",
-    description: "Encode anything to base64",
-    input: {
-      type: "string",
-      description: "Input the data you'd like to encode to base64",
-      example: "Hello, world"
-    },
-    output: {
-      type: "string",
-      description: "Base64 encoded string",
-      example: "SGVsbG8sIHdvcmxk"
-    }
-  };
-
   app.get('/functions/base64aEncode', (req, res) => {
+    const docs = {
+        name: "base64Encode",
+        description: "Encode anything to base64",
+        input: {
+          type: "string",
+          description: "Input the data you'd like to encode to base64",
+          example: "Hello, world"
+        },
+        output: {
+          type: "string",
+          description: "Base64 encoded string",
+          example: "SGVsbG8sIHdvcmxk"
+        }
+      };
     res.json(docs);
   });
 
