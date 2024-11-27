@@ -50,10 +50,10 @@ const docs = {
     }
   };
 
-  app.get('/functions/base64Encode', (req, res) => {
+  app.get('/functions/base64aEncode', (req, res) => {
     res.json(docs);
   });
 
-app.post('/functions/base64Encode', base64Encode);
+app.post('/functions/base64aEncode', base64Encode);
 
 export default app;
