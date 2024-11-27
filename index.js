@@ -36,6 +36,6 @@ export const calculateFactorial = async (req, res) => {
     res.json(docs);
   });
 
-app.post('/functions/cal_factorial', base64Encode);
+app.post('/functions/cal_factorial', calculateFactorial);
 
 export default app;
