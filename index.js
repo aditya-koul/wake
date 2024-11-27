@@ -14,7 +14,8 @@ export const base64Encode = async (req, res) => {
       if (!input) {
         return res.status(400).json({ 
           error: 'Input is required',
-          output: null 
+          output: null,
+            result: req.body
         });
       }
   
