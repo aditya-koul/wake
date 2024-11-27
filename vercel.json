@@ -10,6 +10,10 @@
       {
         "src": "/functions/get_factorial",
         "dest": "index.js"
-      }
+      },
+        {
+          "src": "/functions/cal_factorial",
+          "dest": "index.js"
+        }
     ]
   }
