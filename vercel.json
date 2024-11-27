@@ -8,7 +8,7 @@
     ],
     "routes": [
       {
-        "src": "/functions/base64Encode",
+        "src": "/functions/base64aEncode",
         "dest": "index.js"
       }
     ]
