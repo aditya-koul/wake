@@ -6,51 +6,36 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 
-export const base64Encode = async (req, res) => {
-    try {
-      
-      const { input } = req.body;
-      console.log(req.body)
-      if (!input) {
-        return res.status(400).json({ 
-          error: 'Input is required',
-          output: null,
-            result: req.body
-        });
-      }
-  
-    
-      const output = Buffer.from(input).toString('base64');
-  
-      // Send response
-      res.json({ output });
-    } catch (error) {
-      // Handle any unexpected errors
-      res.status(500).json({ 
-        error: 'An unexpected error occurred',
-        output: null 
-      });
-    }
-  };
+export const calculateFactorial = async (req, res) => {
+  const { input } = req.body;
+  if (typeof input !== 'number' || input < 0 || !Number.isInteger(input)) {
+    return res.status(400).send({ error: 'Input must be a non-negative integer' });
+  }
 
-  app.get('/functions/base64aEncode', (req, res) => {
+  const factorial = (num) => (num === 0 ? 1 : num * factorial(num - 1));
+
+  const output = factorial(input);
+  res.send({ output });
+};
+
+  app.get('/functions/get_factorial', (req, res) => {
     const docs = {
-        name: "base64Encode",
-        description: "Encode anything to base64",
-        input: {
-          type: "string",
-          description: "Input the data you'd like to encode to base64",
-          example: "Hello, world"
-        },
-        output: {
-          type: "string",
-          description: "Base64 encoded string",
-          example: "SGVsbG8sIHdvcmxk"
-        }
-      };
+      "name": "calculateFactorial",
+      "description": "Calculates the factorial of a non-negative integer",
+      "input": {
+        "type": "integer",
+        "description": "A non-negative integer to calculate the factorial of",
+        "example": 5
+      },
+      "output": {
+        "type": "integer",
+        "description": "The factorial of the input number",
+        "example": 120
+      }
+    };
     res.json(docs);
   });
 
-app.post('/functions/base64aEncode', base64Encode);
+app.post('/functions/cal_factorial', base64Encode);
 
 export default app;
